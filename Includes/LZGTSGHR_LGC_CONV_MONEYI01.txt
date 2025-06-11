@@ -1,0 +1,17 @@
+*----------------------------------------------------------------------*
+***INCLUDE LZGTSGHR_LGC_CONV_MONEYI01 .
+*----------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+MODULE zm_user_command_9000 INPUT.
+  CASE sy-ucomm.
+    WHEN 'BACK' OR 'CANC' OR 'EXIT'.
+      PERFORM zf_return_to_last_screen.
+    WHEN 'DOLAR'.
+        PERFORM zf_convert_dolar.
+    WHEN 'EURO'.
+      PERFORM zf_convert_euro.
+    WHEN 'REAL'.
+      PERFORM zf_convert_real.
+    WHEN OTHERS.
+  ENDCASE.
+ENDMODULE.                 " ZM_USER_COMMAND_9000  INPUT

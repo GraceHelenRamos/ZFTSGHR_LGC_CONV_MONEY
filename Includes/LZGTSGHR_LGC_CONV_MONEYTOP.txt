@@ -1,0 +1,4 @@
+FUNCTION-POOL zgtsghr_lgc_conv_money.       "MESSAGE-ID ..
+
+DATA: v_moeda TYPE zstghr_curr,
+      v_result_conv type p.

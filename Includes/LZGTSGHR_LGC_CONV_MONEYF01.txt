@@ -1,0 +1,52 @@
+*----------------------------------------------------------------------*
+***INCLUDE LZGTSGHR_LGC_CONV_MONEYF01 .
+*----------------------------------------------------------------------*
+*&---------------------------------------------------------------------*
+*&      Form  ZF_RETURN_TO_LAST_SCREEN
+*&---------------------------------------------------------------------*
+FORM zf_return_to_last_screen .
+  SET SCREEN 0.
+  LEAVE SCREEN.
+ENDFORM.                    " ZF_RETURN_TO_LAST_SCREEN
+*&---------------------------------------------------------------------*
+*&      Form  ZF_POPUP_TO_DISPLAY_TEXT
+*&---------------------------------------------------------------------*
+
+FORM zf_popup_to_display_text USING p_result_conv TYPE p.
+  CALL FUNCTION 'POPUP_TO_DISPLAY_TEXT'
+    EXPORTING
+      titel        = text-t01
+      textline1    = p_result_conv
+      start_column = 10
+      start_row    = 6.
+ENDFORM.                    " ZF_POPUP_TO_DISPLAY_TEXT
+*&---------------------------------------------------------------------*
+*&      Form  ZF_CONVERT_DOLAR
+*&---------------------------------------------------------------------*
+FORM ZF_CONVERT_DOLAR .
+  v_result_conv =  v_moeda / '5.00'.
+
+  PERFORM zf_popup_to_display_text USING v_result_conv.
+
+  PERFORM zf_return_to_last_screen.
+ENDFORM.                    " ZF_CONVERT_DOLAR
+*&---------------------------------------------------------------------*
+*&      Form  ZF_CONVERT_EURO
+*&---------------------------------------------------------------------*
+FORM ZF_CONVERT_EURO .
+v_result_conv =  v_moeda / '5.27'.
+
+PERFORM zf_popup_to_display_text USING v_result_conv.
+
+  PERFORM zf_return_to_last_screen.
+ENDFORM.                    " ZF_CONVERT_EURO
+*&---------------------------------------------------------------------*
+*&      Form  ZF_CONVERT_REAL
+*&---------------------------------------------------------------------*
+FORM ZF_CONVERT_REAL .
+ v_result_conv =  v_moeda / '1.00'.
+
+ PERFORM zf_popup_to_display_text USING v_result_conv.
+
+  PERFORM zf_return_to_last_screen.
+ENDFORM.                    " ZF_CONVERT_REAL
